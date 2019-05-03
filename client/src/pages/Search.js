@@ -24,6 +24,11 @@ class Search extends Component {
       .catch(err => console.log(err));
   }
 
+  saveBook = bookData => {
+    API.saveBook(bookData)
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div>
@@ -35,19 +40,23 @@ class Search extends Component {
             onChange={this.handleInputChange}
             onClick={this.handleFormSubmit}
           />
-          <BookList>
+          <BookList title="Search Results">
             {!this.state.books.length ? (
               <h1 className="text-center">No Books to Display</h1>
             ) : (
               this.state.books.map(book => {
+                const bookData = {
+                  title: book.volumeInfo.title,
+                  authors: book.volumeInfo.authors,
+                  description: book.volumeInfo.description,
+                  image: book.volumeInfo.imageLinks.thumbnail,
+                  link: book.volumeInfo.infoLink
+                }
                 return (
                   <BookListItem
                     key={book.id}
-                    title={book.volumeInfo.title}
-                    authors={book.volumeInfo.authors}
-                    description={book.volumeInfo.description}
-                    image={book.volumeInfo.imageLinks.thumbnail}
-                    link={book.volumeInfo.infoLink}
+                    bookData={bookData}
+                    saveOnClick={() => this.saveBook(bookData)}
                   />
                 );
               })
