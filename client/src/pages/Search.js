@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import Nav from "../components/Nav"
 import SearchBox from "../components/SearchBox"
+import { BookList, BookListItem } from "../components/BookList";
 
 class Search extends Component {
   state = {
@@ -34,6 +35,24 @@ class Search extends Component {
             onChange={this.handleInputChange}
             onClick={this.handleFormSubmit}
           />
+          <BookList>
+            {!this.state.books.length ? (
+              <h1 className="text-center">No Books to Display</h1>
+            ) : (
+              this.state.books.map(book => {
+                return (
+                  <BookListItem
+                    key={book.id}
+                    title={book.volumeInfo.title}
+                    authors={book.volumeInfo.authors}
+                    description={book.volumeInfo.description}
+                    image={book.volumeInfo.imageLinks.thumbnail}
+                    link={book.volumeInfo.infoLink}
+                  />
+                );
+              })
+            )}
+          </BookList>
         </div>
       </div>
     );
