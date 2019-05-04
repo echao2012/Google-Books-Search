@@ -2,3 +2,24 @@
   background-color: #71b4ff;
   color:#FFFFFF;
 }
+
+.jumbotron img {
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+
+.jumbotron .outer {
+  width: 100%;
+  text-align: center;
+}
+
+.jumbotron .inner {
+  display: inline-block;
+  text-align: initial;
+}
+
+.jumbotron .text {
+  float: left;
+  margin-left: 14px;
+}
