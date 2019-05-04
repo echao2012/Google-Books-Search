@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function BookList(props) {
   return (
@@ -25,7 +26,7 @@ export function BookListItem(props) {
           <div className="col-sm-2">
             <a href={props.bookData.link} className="btn btn-outline-primary m-1" target="_blank">View</a>
             {props.saveOnClick ? (
-              <button type="submit" className="btn btn-outline-primary m-1" onClick={props.saveOnClick}>Save</button>
+              <a href="/saved" className="btn btn-outline-primary m-1" onClick={props.saveOnClick}>Save</a>
             ) : (
               <button type="submit" className="btn btn-outline-danger m-1" onClick={props.deleteOnClick}>Delete</button>
             )}
