@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Nav from "../components/Nav"
+import Jumbotron from "../components/Jumbotron";
 import { BookList, BookListItem } from "../components/BookList";
 
 class Saved extends Component {
@@ -28,10 +29,11 @@ class Saved extends Component {
     return (
       <div>
         <Nav location={this.props.location.pathname} />
+        <Jumbotron />
         <div className="container-fluid">
           <BookList title="Saved Books">
             {!this.state.books.length ? (
-              <h1 className="text-center">No Books to Display</h1>
+              <h2 className="text-center text-muted">No Books to Display</h2>
             ) : (
               this.state.books.map(book => {
                 return (

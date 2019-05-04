@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Nav from "../components/Nav"
+import Jumbotron from "../components/Jumbotron";
 import SearchBox from "../components/SearchBox"
 import { BookList, BookListItem } from "../components/BookList";
 
@@ -33,6 +34,7 @@ class Search extends Component {
     return (
       <div>
         <Nav location={this.props.location.pathname} />
+        <Jumbotron />
         <div className="container-fluid">
           <SearchBox
             name="bookSearch"
@@ -42,7 +44,7 @@ class Search extends Component {
           />
           <BookList title="Search Results">
             {!this.state.books.length ? (
-              <h1 className="text-center">No Books to Display</h1>
+              <h2 className="text-center text-muted">No Books to Display</h2>
             ) : (
               this.state.books.map(book => {
                 const bookData = {
